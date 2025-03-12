@@ -1,0 +1,94 @@
+.cadastro-card {
+  width: 450px;
+  margin: auto;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+  padding: 30px;
+  border-radius: 16px;
+  box-shadow: 0px 15px 40px rgba(0, 0, 0, 0.2);
+  background-color: #2c2c2c;
+  color: #ffffff;
+}
+
+mat-toolbar {
+  background-color: #1a237e; /* Azul escuro */
+  color: #ffffff;
+  font-size: 1.5rem;
+  font-weight: bold;
+  text-transform: uppercase;
+  padding: 16px;
+  border-radius: 16px 16px 0 0;
+  margin-bottom: 20px;
+}
+
+mat-form-field {
+  width: 100%;
+  margin-bottom: 20px;
+}
+
+mat-form-field .mat-label {
+  font-weight: 600;
+  color: #d1c4e9; /* Cor de rótulo em tom mais claro */
+}
+
+mat-form-field input, mat-form-field mat-select {
+  font-size: 1rem;
+  padding: 12px;
+  border-radius: 8px;
+  border: 1px solid #555; /* Cor de borda escura */
+  background-color: #444;
+  color: #ffffff;
+  transition: border-color 0.3s ease, background-color 0.3s ease;
+}
+
+mat-form-field input:focus, mat-form-field mat-select:focus {
+  border-color: #1a237e; /* Azul escuro ao focar */
+  background-color: #333;
+}
+
+mat-form-field input::placeholder, mat-form-field mat-select::placeholder {
+  color: #bbb; /* Placeholder em tom mais suave */
+}
+
+.actions {
+  display: flex;
+  justify-content: space-between;
+  padding: 16px;
+  border-top: 1px solid #555;
+}
+
+button {
+  width: 48%;
+  font-weight: bold;
+  font-size: 1.1rem;
+  padding: 12px;
+  border-radius: 8px;
+  transition: all 0.3s ease;
+}
+
+button:hover {
+  transform: translateY(-3px);
+}
+
+button.mat-button {
+  color: #fff;
+}
+
+button.mat-button[color='primary'] {
+  background-color: #1a237e; /* Azul escuro para o botão primário */
+}
+
+button.mat-button[color='warn'] {
+  background-color: #d32f2f; /* Vermelho forte para o botão de cancelar */
+}
+
+button.mat-button[color='primary']:hover {
+  background-color: #0d1333; /* Azul mais escuro ao passar o mouse */
+}
+
+button.mat-button[color='warn']:hover {
+  background-color: #b71c1c; /* Vermelho mais escuro ao passar o mouse */
+}
