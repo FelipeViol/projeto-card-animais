@@ -1,25 +1,49 @@
 <mat-card class="cadastro-card">
   <mat-toolbar color="secondary">Cadastro de Animais</mat-toolbar>
   <mat-card-content>
-    <mat-form-field appearance="outline" class="full-width">
-      <mat-label>Nome do Cachorro</mat-label>
-      <input matInput [(ngModel)]="nome" type="text">
-    </mat-form-field>
+    <form [formGroup]="cadastroForm">
+      <mat-form-field appearance="outline" class="full-width">
+        <mat-label>Nome do Cachorro</mat-label>
+        <input matInput formControlName="nome" type="text">
+        <!-- Validação de erro -->
+        <mat-error *ngIf="cadastroForm.get('nome')?.hasError('required')">Nome é obrigatório</mat-error>
+      </mat-form-field>
 
-    <mat-form-field appearance="outline" class="full-width">
-      <mat-label>Idade</mat-label>
-      <input matInput [(ngModel)]="idade" type="number">
-    </mat-form-field>
+      <mat-form-field appearance="outline" class="full-width">
+        <mat-label>Idade</mat-label>
+        <input matInput formControlName="idade" type="number">
+        <!-- Validação de erro -->
+        <mat-error *ngIf="cadastroForm.get('idade')?.hasError('required')">Idade é obrigatória</mat-error>
+        <mat-error *ngIf="cadastroForm.get('idade')?.hasError('min')">Idade deve ser maior que 0</mat-error>
+      </mat-form-field>
 
-    <mat-form-field appearance="outline" class="full-width">
-      <mat-label>Cor</mat-label>
-      <mat-select [(ngModel)]="cor">
-        <mat-option *ngFor="let c of cores" [value]="c">{{ c }}</mat-option>
-      </mat-select>
-    </mat-form-field>
+      <mat-form-field appearance="outline" class="full-width">
+        <mat-label>Cor</mat-label>
+        <mat-select formControlName="cor">
+          <mat-option *ngFor="let c of cores" [value]="c">{{ c }}</mat-option>
+        </mat-select>
+        <!-- Validação de erro -->
+        <mat-error *ngIf="cadastroForm.get('cor')?.hasError('required')">Cor é obrigatória</mat-error>
+      </mat-form-field>
+
+      <mat-card-actions class="actions">
+        <button mat-button color="primary" (click)="salvar()">Salvar</button>
+        <button mat-button color="warn" (click)="cancelar()">Cancelar</button>
+      </mat-card-actions>
+    </form>
   </mat-card-content>
-  <mat-card-actions class="actions">
-    <button mat-button color="primary" (click)="salvar()">Salvar</button>
-    <button mat-button color="warn" (click)="cancelar()">Cancelar</button>
-  </mat-card-actions>
+</mat-card>
+
+<!-- Lista dos animais cadastrados -->
+<mat-card class="cadastro-list">
+  <mat-card-title>Animais Cadastrados</mat-card-title>
+  <mat-list *ngIf="animais.length > 0">
+    <ng-container *ngFor="let animal of animais">
+      <mat-list-item>
+        <strong>{{ animal.nome }}</strong> - {{ animal.idade }} anos - {{ animal.cor }}
+      </mat-list-item>
+      <mat-divider></mat-divider>
+    </ng-container>
+  </mat-list>
+  <p *ngIf="animais.length === 0">Nenhum animal cadastrado.</p>
 </mat-card>
